@@ -1,0 +1,14 @@
+/* Subtle transitions */
+.visualization-container {
+    transition: box-shadow 0.3s ease;
+}
+
+.visualization-container:hover {
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
+}
+
+.btn {
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+/* Add any future ML animation CSS classes here */

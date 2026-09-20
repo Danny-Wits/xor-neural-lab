@@ -1,0 +1,67 @@
+:root {
+    --bg-paper: #F4F0E6;
+    --text-ink: #111111;
+    --text-secondary: #5A5A5A;
+    --border-color: #C8C2B5;
+    --accent-red: #C62828;
+    --success-green: #1B5E20;
+    
+    --font-headline: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-paper);
+    color: var(--text-ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.newspaper-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem 2rem;
+}
+
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-paper);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    z-index: 1000;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.sticky-nav a {
+    color: var(--text-ink);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 500;
+}
+.sticky-nav a:hover {
+    color: var(--accent-red);
+}
+
+@media (max-width: 768px) {
+    .sticky-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .nav-right a { margin: 0 0.5rem; }
+}
