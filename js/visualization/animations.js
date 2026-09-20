@@ -157,10 +157,10 @@ export function drawLinearSeparabilityDemo(p) {
     
     // Draw the two regions
     p.noStroke();
-    p.fill(17, 17, 17, 20); // Ink tint
+    p.fill(255, 255, 255, 120); // Whitened for contrast
     p.rect(0, -h, w, h*2);
     
-    p.fill(198, 40, 40, 20); // Red tint
+    p.fill(198, 40, 40, 40); // Red tint
     p.rect(-w, -h, w, h*2);
     p.pop();
     

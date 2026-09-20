@@ -3,7 +3,7 @@ export function drawDecisionBoundary(p, model, resolution = 15) {
     
     // Editorial colors
     const color0 = p.color(198, 40, 40, 50);   // Red tint for Class 0
-    const color1 = p.color(17, 17, 17, 50);    // Ink tint for Class 1
+    const color1 = p.color(255, 255, 255, 180);  // Whitened for high contrast    // Ink tint for Class 1
     
     for (let i = 0; i < p.width; i += resolution) {
         for (let j = 0; j < p.height; j += resolution) {
