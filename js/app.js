@@ -119,6 +119,18 @@ function connectMLPControls() {
     get('btn-mlp-reset').addEventListener('click', doReset);
     
     get('lr-slider').disabled = false;
+
+    const lrSlider = get('lr-slider');
+    const lrDisplay = get('lr-display');
+    if (lrSlider && lrDisplay) {
+        lrSlider.addEventListener('input', (e) => {
+            lrDisplay.innerText = parseFloat(e.target.value).toFixed(2);
+            // Update Section 08 label too
+            const sec8Stats = document.querySelectorAll('#sec-08 .status-value');
+            if (sec8Stats.length >= 4) sec8Stats[3].innerText = e.target.value;
+        });
+    }
+
     get('epoch-input').disabled = false;
 }
 
@@ -209,6 +221,7 @@ function setupVisualizations() {
             p.createCanvas(c.clientWidth, c.clientHeight);
             p.noLoop();
         };
+        p.windowResized = () => { const c = get('xor-vis-placeholder'); if (c) p.resizeCanvas(c.clientWidth, c.clientHeight); };
         p.draw = () => { p.background('#F4F0E6'); drawXorPlot(p, state.dataset); };
     }, 'xor-vis-placeholder');
 
@@ -219,6 +232,7 @@ function setupVisualizations() {
             c.innerHTML = '';
             p.createCanvas(c.clientWidth, c.clientHeight);
         };
+        p.windowResized = () => { const c = get('perceptron-boundary-vis'); if (c) p.resizeCanvas(c.clientWidth, c.clientHeight); };
         p.draw = () => {
             p.background('#F4F0E6');
             drawDecisionBoundary(p, state.perceptron, 15);
@@ -233,6 +247,7 @@ function setupVisualizations() {
             c.innerHTML = '';
             p.createCanvas(c.clientWidth, c.clientHeight);
         };
+        p.windowResized = () => { const c = get('decision-regions-container'); if (c) p.resizeCanvas(c.clientWidth, c.clientHeight); };
         p.draw = () => {
             p.background('#F4F0E6');
             drawDecisionBoundary(p, state.mlp, 15);
@@ -246,6 +261,7 @@ function setupVisualizations() {
             c.innerHTML = '';
             p.createCanvas(c.clientWidth, c.clientHeight);
         };
+        p.windowResized = () => { const c = get('perceptron-vis-placeholder'); if (c) p.resizeCanvas(c.clientWidth, c.clientHeight); };
         p.draw = () => {
             p.background('#F4F0E6');
             drawPerceptronNetwork(p, state.perceptron);
@@ -259,6 +275,7 @@ function setupVisualizations() {
             c.innerHTML = '';
             p.createCanvas(c.clientWidth, c.clientHeight);
         };
+        p.windowResized = () => { const c = get('mlp-vis-placeholder'); if (c) p.resizeCanvas(c.clientWidth, c.clientHeight); };
         p.draw = () => {
             p.background('#F4F0E6');
             drawMLPNetwork(p, state.mlp);
@@ -272,6 +289,7 @@ function setupVisualizations() {
             c.innerHTML = '';
             p.createCanvas(c.clientWidth, c.clientHeight);
         };
+        p.windowResized = () => { const c = get('animation-container'); if (c) p.resizeCanvas(c.clientWidth, c.clientHeight); };
         p.draw = () => {
             drawTrainingAnimation(p, state.trainer.isTraining);
         };
@@ -284,6 +302,7 @@ function setupVisualizations() {
             c.innerHTML = '';
             p.createCanvas(c.clientWidth, c.clientHeight);
         };
+        p.windowResized = () => { const c = get('linear-separability-vis'); if (c) p.resizeCanvas(c.clientWidth, c.clientHeight); };
         p.draw = () => {
             drawLinearSeparabilityDemo(p);
         };
@@ -298,6 +317,7 @@ function setupVisualizations() {
             c.innerHTML = '';
             p.createCanvas(c.clientWidth, c.clientHeight);
         };
+        p.windowResized = () => { const c = get('xor-boundary-placeholder'); if (c) p.resizeCanvas(c.clientWidth, c.clientHeight); };
         p.draw = () => {
             drawXorProblemHighlight(p);
         };
